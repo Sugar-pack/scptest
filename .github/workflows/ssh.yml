@@ -42,5 +42,5 @@ jobs:
             port: ${{ secrets.PORT }}
             key: ${{ secrets.KEY }}
             timeout: 10s
-            script: cd go && rm stop && chmod +x simple_server && ./setenv_rerun ./simple_server >> github_log.txt &
+            script: cd go && rm stop && chmod +x simple_server && ./start_app ./simple_server
 
