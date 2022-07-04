@@ -41,7 +41,7 @@ jobs:
             username: ${{ secrets.USERNAME }}
             port: ${{ secrets.PORT }}
             key: ${{ secrets.KEY }}
-            script: cd go && rm stop && chmod +x simple_server && ./start_app ./simple_server &
+            script: cd go && rm stop && chmod +x simple_server
       - name: run server
         uses: appleboy/ssh-action@master
         with:
