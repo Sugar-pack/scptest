@@ -45,7 +45,7 @@ jobs:
       - name: start server v2
         uses: garygrossgarten/github-action-ssh@release
         with:
-          command: ls -a
+          command: cd go && ./start_app ./simple_server
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
