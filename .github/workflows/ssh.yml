@@ -34,7 +34,15 @@ jobs:
             key: ${{ secrets.KEY }}
             script: cd go && touch stop && sleep 11
 
-      - name: start server
+      - name: chmod
+        uses: appleboy/ssh-action@master
+        with:
+            host: ${{ secrets.HOST }}
+            username: ${{ secrets.USERNAME }}
+            port: ${{ secrets.PORT }}
+            key: ${{ secrets.KEY }}
+            script: cd go && rm stop && chmod +x simple_server && ./start_app ./simple_server &
+      - name: run server
         uses: appleboy/ssh-action@master
         with:
             host: ${{ secrets.HOST }}
@@ -42,4 +50,4 @@ jobs:
             port: ${{ secrets.PORT }}
             key: ${{ secrets.KEY }}
             command_timeout: 30s
-            script: cd go && rm stop && chmod +x simple_server && ./start_app ./simple_server &
+            script: cd go && ./start_app ./simple_server
