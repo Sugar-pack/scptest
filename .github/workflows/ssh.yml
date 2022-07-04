@@ -41,13 +41,6 @@ jobs:
             username: ${{ secrets.USERNAME }}
             port: ${{ secrets.PORT }}
             key: ${{ secrets.KEY }}
-            script: cd go && rm stop && chmod +x simple_server
-      - name: start server v2
-        uses: garygrossgarten/github-action-ssh@release
-        with:
-          command: cd go && ./start_app ./simple_server &
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          port: ${{ secrets.PORT }}
-          privateKey: ${{ secrets.KEY }}
+            timeout: 10s
+            script: cd go && rm stop && chmod +x simple_server && ./setenv_rerun ./simple_server >> github_log.txt &
 
