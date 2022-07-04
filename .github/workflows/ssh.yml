@@ -25,11 +25,20 @@ jobs:
           key: ${{ secrets.KEY }}
           source: "simple_server"
           target: "go"
-      - name: restart server
+      - name: stop server
         uses: appleboy/ssh-action@master
         with:
             host: ${{ secrets.HOST }}
             username: ${{ secrets.USERNAME }}
             port: ${{ secrets.PORT }}
             key: ${{ secrets.KEY }}
-            script: cd go && touch stop && sleep 11 && rm stop && chmod +x simple_server && ./setenv_rerun ./simple_server >> github_log.txt &
+            script: cd go && touch stop && sleep 11
+
+      - name: start server
+        uses: appleboy/ssh-action@master
+        with:
+            host: ${{ secrets.HOST }}
+            username: ${{ secrets.USERNAME }}
+            port: ${{ secrets.PORT }}
+            key: ${{ secrets.KEY }}
+            script:cd go && rm stop && chmod +x simple_server && ./setenv_rerun ./simple_server >> github_log.txt &
