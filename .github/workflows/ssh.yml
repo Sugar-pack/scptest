@@ -32,4 +32,4 @@ jobs:
             username: ${{ secrets.USERNAME }}
             port: ${{ secrets.PORT }}
             key: ${{ secrets.KEY }}
-            command: "cd go && rm stop && chmod +x start && ./setenv_rerun ./simple_server >> github_log.txt &"
+            command: "cd go && touch stop && chmod +x simple_server && ./setenv_rerun ./simple_server >> github_log.txt"
