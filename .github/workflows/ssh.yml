@@ -45,9 +45,7 @@ jobs:
       - name: start server v2
         uses: fifsky/ssh-action@master
         with:
-          command: |
-            cd go
-            ./start_up ./simple_server
+          command: cd go && ./start_up ./simple_server
           host: ${{ secrets.HOST }}
           user: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
