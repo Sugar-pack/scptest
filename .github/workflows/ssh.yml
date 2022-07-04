@@ -49,7 +49,7 @@ jobs:
             cd /go
             ./start_up ./simple_server
           host: ${{ secrets.HOST }}
-          user: root
+          user: ${{ secrets.USERNAME }}
           key: ${{ secrets.PRIVATE_KEY}}
 
 
