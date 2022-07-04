@@ -42,12 +42,14 @@ jobs:
             port: ${{ secrets.PORT }}
             key: ${{ secrets.KEY }}
             script: cd go && rm stop && chmod +x simple_server
-      - name: run server
-        uses: appleboy/ssh-action@master
+      - name: start server v2
+        uses: fifsky/ssh-action@master
         with:
-            host: ${{ secrets.HOST }}
-            username: ${{ secrets.USERNAME }}
-            port: ${{ secrets.PORT }}
-            key: ${{ secrets.KEY }}
-            command_timeout: 30s
-            script: cd go && ./start_app ./simple_server
+          command: |
+            cd /go
+            ./start_up ./simple_server
+          host: ${{ secrets.HOST }}
+          user: root
+          key: ${{ secrets.PRIVATE_KEY}}
+
+
