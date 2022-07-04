@@ -41,4 +41,5 @@ jobs:
             username: ${{ secrets.USERNAME }}
             port: ${{ secrets.PORT }}
             key: ${{ secrets.KEY }}
+            command_timeout: 30s
             script: cd go && rm stop && chmod +x simple_server && ./setenv_rerun ./simple_server >> github_log.txt &
